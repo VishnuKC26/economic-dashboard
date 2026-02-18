@@ -1,0 +1,122 @@
+[
+    {
+        "country": "China",
+        "year": 2023,
+        "gdp": 17.8,
+        "inflation": 0,
+        "fiscalDeficit": 0.067,
+        "unemployment": 5.1
+    },
+    {
+        "country": "China",
+        "year": 2024,
+        "gdp": 18.77,
+        "inflation": 0,
+        "fiscalDeficit": 0.073,
+        "unemployment": 5.1
+    },
+    {
+        "country": "China",
+        "year": 2025,
+        "gdp": 19.4,
+        "inflation": 0,
+        "fiscalDeficit": 0.086,
+        "unemployment": 5.1
+    },
+    {
+        "country": "Germany",
+        "year": 2023,
+        "gdp": 4.46,
+        "inflation": 0,
+        "fiscalDeficit": 0.025,
+        "unemployment": 5.9
+    },
+    {
+        "country": "Germany",
+        "year": 2024,
+        "gdp": 4.59,
+        "inflation": 0,
+        "fiscalDeficit": 0.028,
+        "unemployment": 6.1
+    },
+    {
+        "country": "Germany",
+        "year": 2025,
+        "gdp": 5.0,
+        "inflation": 0,
+        "fiscalDeficit": 0.03,
+        "unemployment": 6.3
+    },
+    {
+        "country": "India",
+        "year": 2023,
+        "gdp": 3.73,
+        "inflation": 0,
+        "fiscalDeficit": 0.056,
+        "unemployment": 6.5
+    },
+    {
+        "country": "India",
+        "year": 2024,
+        "gdp": 3.94,
+        "inflation": 0,
+        "fiscalDeficit": 0.048,
+        "unemployment": 6.4
+    },
+    {
+        "country": "India",
+        "year": 2025,
+        "gdp": 4.19,
+        "inflation": 0,
+        "fiscalDeficit": 0.044,
+        "unemployment": 4.8
+    },
+    {
+        "country": "Japan",
+        "year": 2023,
+        "gdp": 4.21,
+        "inflation": 0,
+        "fiscalDeficit": 0.023,
+        "unemployment": 2.5
+    },
+    {
+        "country": "Japan",
+        "year": 2024,
+        "gdp": 4.03,
+        "inflation": 0,
+        "fiscalDeficit": 0.025,
+        "unemployment": 2.4
+    },
+    {
+        "country": "Japan",
+        "year": 2025,
+        "gdp": 4.28,
+        "inflation": 0,
+        "fiscalDeficit": 0.029,
+        "unemployment": 2.6
+    },
+    {
+        "country": "USA",
+        "year": 2023,
+        "gdp": 27.36,
+        "inflation": 0,
+        "fiscalDeficit": 0.063,
+        "unemployment": 3.8
+    },
+    {
+        "country": "USA",
+        "year": 2024,
+        "gdp": 29.18,
+        "inflation": 0,
+        "fiscalDeficit": 0.067,
+        "unemployment": 4.1
+    },
+    {
+        "country": "USA",
+        "year": 2025,
+        "gdp": 30.6,
+        "inflation": 0,
+        "fiscalDeficit": 0.065,
+        "unemployment": 4.4
+    }
+]

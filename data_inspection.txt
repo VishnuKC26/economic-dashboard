@@ -1,0 +1,36 @@
+
+--- Fiscal Deficit and Growth Data.xlsx ---
+         Country  2023 (Actual)  FD Growth (2023 to 2024)  2024 (Final/RE)  FD Growth (2024 to 2025)  2025 (Projected/BE)            Trend
+0          India          0.056                    -0.024            0.048                    -0.041                0.044    Consolidating
+1  United States          0.063                     0.063            0.067                    -0.030                0.065      Stable/High
+2          China          0.067                     0.091            0.073                     0.178                0.086        Expanding
+3        Germany          0.025                     0.120            0.028                     0.071                0.030  Slight Increase
+4          Japan          0.023                     0.087            0.025                     0.160                0.029     Gradual Rise
+
+--- GDP_Data_2023-2025.xlsx ---
+                                                     GDP DATA: MAJOR ECONOMIES (2023-2025)     Unnamed: 1       Unnamed: 2     Unnamed: 3       Unnamed: 4     Unnamed: 5       Unnamed: 6
+0       Source: IMF World Economic Outlook, World Bank, National Statistics (October 2025)            NaN              NaN            NaN              NaN            NaN              NaN
+1                                                                                      NaN            NaN              NaN            NaN              NaN            NaN              NaN
+2                                                                                  Country  2023 GDP ($T)  2023 Growth (%)  2024 GDP ($T)  2024 Growth (%)  2025 GDP ($T)  2025 Growth (%)
+3                                                                            United States          27.36              2.9          29.18              2.8           30.6              2.5
+4                                                                                    China           17.8              5.2          18.77                5           19.4              4.8
+5                                                                                  Germany           4.46             -0.3           4.59             -0.5              5              0.2
+6                                                                                    Japan           4.21              1.9           4.03              0.1           4.28              0.6
+7                                                                                    India           3.73              7.2           3.94              6.5           4.19              6.2
+8                                                                                      NaN            NaN              NaN            NaN              NaN            NaN              NaN
+9                                                                             KEY INSIGHTS            NaN              NaN            NaN              NaN            NaN              NaN
+10                • US remains the largest economy, growing steadily at ~2.5-2.9% annually            NaN              NaN            NaN              NaN            NaN              NaN
+11                • China is the second largest, with GDP growth slowing from 5.2% to 4.8%            NaN              NaN            NaN              NaN            NaN              NaN
+12  • India shows fastest growth rate (6-7%), overtook Japan to become 4th largest in 2025            NaN              NaN            NaN              NaN            NaN              NaN
+13                              • Germany contracted in 2023-2024, slight recovery in 2025            NaN              NaN            NaN              NaN            NaN              NaN
+14               • Japan shows minimal growth (0.1-1.9%), GDP affected by yen depreciation            NaN              NaN            NaN              NaN            NaN              NaN
+15                             • All GDP figures are in nominal terms (current USD prices)            NaN              NaN            NaN              NaN            NaN              NaN
+16                               • 2025 figures include IMF estimates and preliminary data            NaN              NaN            NaN              NaN            NaN              NaN
+
+--- UnemplRate.xlsx ---
+         Country  Unemployment rate(2023)  %change(23-24)  Unemployment rate(2024)  %change(23-24).1  Unemployment rate(2025)
+0          India                      6.5            -0.1                      6.4              -1.6                      4.8
+1  United States                      3.8             0.3                      4.1               0.3                      4.4
+2          China                      5.1             0.0                      5.1               0.0                      5.1
+3        Germany                      5.9             0.2                      6.1               0.2                      6.3
+4          Japan                      2.5            -0.1                      2.4               0.2                      2.6

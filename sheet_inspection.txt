@@ -1,0 +1,14 @@
+
+--- Fiscal Deficit and Growth Data.xlsx ---
+Sheets: ['Fiscal Deficit and Growth Data']
+  Sheet 'Fiscal Deficit and Growth Data' Columns: ['Country', '2023 (Actual)', 'FD Growth (2023 to 2024)', '2024 (Final/RE)', 'FD Growth (2024 to 2025)', '2025 (Projected/BE)', 'Trend']
+
+--- GDP_Data_2023-2025.xlsx ---
+Sheets: ['GDP Data 2023-2025', 'Year-wise View']
+  Sheet 'GDP Data 2023-2025' Columns: ['GDP DATA: MAJOR ECONOMIES (2023-2025)', 'Unnamed: 1', 'Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6']
+  Sheet 'Year-wise View' Columns: ['Year', 'Country', 'GDP (Trillion USD)', 'Growth Rate (%)']
+
+--- UnemplRate.xlsx ---
+Sheets: ['Sheet1', 'Sheet2']
+  Sheet 'Sheet1' Columns: ['Country', 'Unemployment rate(2023)', '%change(23-24)', 'Unemployment rate(2024)', '%change(23-24).1', 'Unemployment rate(2025)']
+  Sheet 'Sheet2' Columns: ['Country']
