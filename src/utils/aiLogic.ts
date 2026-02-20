@@ -33,6 +33,8 @@ export const generateInsight = (
         insight += `A high deficit of ${top.fiscalDeficit}% suggests aggressive spending, whereas ${bottom.country} (${bottom.fiscalDeficit}%) shows fiscal prudence. `;
     } else if (selectedMetric === 'Unemployment') {
         insight += `${bottom.country} outperforms with only ${bottom.unemployment}% unemployment, indicating near-full employment compared to ${top.country}'s ${top.unemployment}%. `;
+    } else if (selectedMetric === 'Growth Rate') {
+        insight += `${top.country} shows robust momentum with ${top.growthRate}% growth, while ${bottom.country} (${bottom.growthRate}%) trails in the current expansion cycle. `;
     }
 
     const topPrev = data.find(d => d.country === top.country && d.year === 2023);
@@ -51,6 +53,8 @@ const getValue = (d: EconomicData, metric: Metric): number => {
         case 'Inflation': return d.inflation;
         case 'Fiscal Deficit': return d.fiscalDeficit;
         case 'Unemployment': return d.unemployment;
+        case 'Growth Rate': return d.growthRate;
+        default: return 0;
     }
 };
 
@@ -60,5 +64,7 @@ const formatValue = (d: EconomicData, metric: Metric): string => {
         case 'Inflation': return `${d.inflation}%`;
         case 'Fiscal Deficit': return `${d.fiscalDeficit}%`;
         case 'Unemployment': return `${d.unemployment}%`;
+        case 'Growth Rate': return `${d.growthRate}%`;
+        default: return '';
     }
 };
