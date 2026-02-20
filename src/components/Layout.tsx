@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { LayoutDashboard, Sun, Moon } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 
 interface LayoutProps {
     children: React.ReactNode;
+    accentColor?: string;
+    perspectiveName?: string;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const Layout = ({ children, accentColor = 'indigo', perspectiveName }: LayoutProps) => {
     const [isDark, setIsDark] = useState(true);
 
     useEffect(() => {
@@ -17,29 +19,52 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     }, [isDark]);
 
     return (
-        <div className={`min-h-screen w-full transition-colors duration-300 ${isDark ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'}`}>
-            {/* Background Gradients */}
+        <div className={`min-h-screen w-full transition-colors duration-300 ${isDark ? 'bg-[#0c0c0e] text-slate-200' : 'bg-slate-50 text-slate-900'}`}>
+            {/* Background Reflection/Presence */}
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-                <div className={`absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] transition-colors duration-500 ${isDark ? 'bg-blue-900/10' : 'bg-blue-300/30'}`} />
-                <div className={`absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] transition-colors duration-500 ${isDark ? 'bg-indigo-900/10' : 'bg-indigo-300/30'}`} />
+                <div
+                    className={`absolute top-0 left-1/4 w-[1000px] h-[600px] rounded-full blur-[160px] opacity-[0.12] transition-all duration-1000`}
+                    style={{
+                        background: `radial-gradient(circle, ${accentColor === 'red' ? '#ef4444' : accentColor === 'amber' ? '#f59e0b' : '#6366f1'} 0%, transparent 70%)`,
+                        transform: 'translate(-50%, -50%)'
+                    }}
+                />
+            </div>
+
+            {/* Background Texture */}
+            <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.02]">
+                <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
             </div>
 
             {/* Header */}
-            <header className="sticky top-0 z-50 w-full border-b backdrop-blur-xl border-slate-200/50 dark:border-slate-800/50 bg-white/50 dark:bg-slate-900/50">
-                <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                        <div className="p-2 rounded-lg bg-indigo-600 text-white">
-                            <LayoutDashboard className="w-5 h-5" />
+            <header className="sticky top-0 z-50 w-full border-b backdrop-blur-md border-slate-800/60 bg-[#0c0c0e]/80">
+                <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                        <div className="w-7 h-7 bg-slate-200 rounded flex items-center justify-center">
+                            <div className="grid grid-cols-2 gap-0.5">
+                                <div className="w-1.5 h-1.5 bg-black/40 rounded-sm"></div>
+                                <div className="w-1.5 h-1.5 bg-black rounded-sm"></div>
+                                <div className="w-1.5 h-1.5 bg-black rounded-sm"></div>
+                                <div className="w-1.5 h-1.5 bg-black/40 rounded-sm"></div>
+                            </div>
                         </div>
-                        <span className="font-bold text-xl bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent">InsightX</span>
+                        <div className="flex items-center gap-3">
+                            <span className="font-black text-sm uppercase tracking-widest text-white">World in Perspective</span>
+                            {perspectiveName && (
+                                <>
+                                    <div className="w-px h-4 bg-slate-800 mx-1" />
+                                    <span className="font-bold text-sm text-slate-400 capitalize">{perspectiveName}</span>
+                                </>
+                            )}
+                        </div>
                     </div>
 
                     <div className="flex items-center gap-4">
                         <button
                             onClick={() => setIsDark(!isDark)}
-                            className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+                            className="p-1.5 rounded-lg hover:bg-slate-800 transition-colors text-slate-400 hover:text-white"
                         >
-                            {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
                         </button>
                     </div>
                 </div>

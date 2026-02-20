@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Trophy } from 'lucide-react';
 import { clsx } from 'clsx';
@@ -8,9 +8,10 @@ import { getCountryColor } from '../data/economics';
 interface LeaderboardCardProps {
     metric: Metric;
     data: EconomicData[]; // Should be data for a specific year (2025)
+    color?: string;
 }
 
-export const LeaderboardCard: React.FC<LeaderboardCardProps> = ({ metric, data }) => {
+export const LeaderboardCard = ({ metric, data, color = 'indigo' }: LeaderboardCardProps) => {
 
     const sortedData = useMemo(() => {
         // Sort by value descending
@@ -22,6 +23,7 @@ export const LeaderboardCard: React.FC<LeaderboardCardProps> = ({ metric, data }
                 case 'Inflation': valA = a.inflation; valB = b.inflation; break;
                 case 'Fiscal Deficit': valA = a.fiscalDeficit; valB = b.fiscalDeficit; break;
                 case 'Unemployment': valA = a.unemployment; valB = b.unemployment; break;
+                case 'Growth Rate': valA = a.growthRate; valB = b.growthRate; break;
             }
             return valB - valA;
         }).slice(0, 3); // Take top 3
@@ -33,6 +35,7 @@ export const LeaderboardCard: React.FC<LeaderboardCardProps> = ({ metric, data }
             case 'Inflation': return `${d.inflation}%`;
             case 'Fiscal Deficit': return `${d.fiscalDeficit}%`;
             case 'Unemployment': return `${d.unemployment}%`;
+            case 'Growth Rate': return `${d.growthRate}%`;
         }
     };
 
@@ -40,31 +43,40 @@ export const LeaderboardCard: React.FC<LeaderboardCardProps> = ({ metric, data }
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative overflow-hidden p-6 rounded-2xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 backdrop-blur-sm"
+            className={`relative overflow-hidden p-6 rounded-3xl bg-[#0f172a]/20 border border-slate-800 shadow-sm transition-all duration-500 ${color === 'red' ? 'hover:border-red-500/20' : color === 'amber' ? 'hover:border-amber-500/20' : 'hover:border-indigo-500/20'
+                }`}
         >
-            <div className="flex items-center gap-2 mb-4 text-amber-500">
-                <Trophy className="w-5 h-5" />
-                <h3 className="font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wide text-sm">Top 3 {metric}</h3>
+            {/* Perspective Accent Bar */}
+            <div className={`absolute top-0 left-0 w-full h-0.5 ${color === 'red' ? 'bg-red-500/30' : color === 'amber' ? 'bg-amber-500/30' : 'bg-indigo-500/30'
+                }`} />
+
+            <div className="flex items-center gap-2 mb-6 text-amber-500">
+                <Trophy className="w-3.5 h-3.5" />
+                <h3 className="font-black text-slate-200 uppercase tracking-[0.2em] text-[10px]">Top 3 {metric}</h3>
             </div>
 
             <div className="space-y-4">
                 {sortedData.map((d, index) => (
                     <div key={d.country} className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                            <span className={clsx(
-                                "flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold",
-                                index === 0 ? "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400" :
-                                    index === 1 ? "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300" :
-                                        "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400" // Bronze-ish
+                        <div className="flex items-center gap-4">
+                            <div className={clsx(
+                                "flex items-center justify-center w-8 h-8 rounded-full text-xs font-black",
+                                index === 0 ? (
+                                    color === 'red' ? 'bg-red-500/20 text-red-500' :
+                                        color === 'amber' ? 'bg-amber-500/20 text-amber-500' :
+                                            'bg-indigo-500/20 text-indigo-500'
+                                ) :
+                                    index === 1 ? "bg-slate-700/50 text-slate-400" :
+                                        "bg-orange-950/40 text-orange-500"
                             )}>
                                 {index + 1}
-                            </span>
+                            </div>
                             <div className="flex flex-col">
-                                <span className="text-sm font-semibold dark:text-slate-200 text-slate-700">{d.country}</span>
-                                <div className="h-1 w-16 rounded-full mt-1" style={{ backgroundColor: getCountryColor(d.country) }}></div>
+                                <span className="text-sm font-bold text-white">{d.country}</span>
+                                <div className="h-0.5 w-10 rounded-full mt-1.5 opacity-40" style={{ backgroundColor: getCountryColor(d.country) }}></div>
                             </div>
                         </div>
-                        <span className="font-mono font-medium text-slate-600 dark:text-slate-400">
+                        <span className="font-bold text-slate-400 text-base tracking-tight">
                             {formatValue(d)}
                         </span>
                     </div>

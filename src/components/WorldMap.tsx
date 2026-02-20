@@ -35,18 +35,21 @@ export const WorldMap: React.FC<WorldMapProps> = ({ data, selectedMetric }) => {
                 case 'Inflation': return d.inflation;
                 case 'Fiscal Deficit': return d.fiscalDeficit;
                 case 'Unemployment': return d.unemployment;
+                case 'Growth Rate': return d.growthRate;
+                default: return 0;
             }
         });
-        const min = Math.min(...values);
-        const max = Math.max(...values);
+
+        const numericValues = values.filter((v): v is number => typeof v === 'number');
+        const min = numericValues.length > 0 ? Math.min(...numericValues) : 0;
+        const max = numericValues.length > 0 ? Math.max(...numericValues) : 100;
 
         // Dynamic color scale based on metric
         let range: [string, string] = ["#ffedea", "#ff5233"];
-        if (selectedMetric === 'GDP') range = ["#e0e7ff", "#3730a3"]; // Indigo
-        if (selectedMetric === 'Inflation') range = ["#ecfdf5", "#047857"]; // Emerald (Low is good... wait, high inflation is bad, let's stick to red/orange for heat)
+        if (selectedMetric === 'GDP' || selectedMetric === 'Growth Rate') range = ["#e0e7ff", "#3730a3"]; // Indigo
         if (selectedMetric === 'Inflation') range = ["#fff7ed", "#c2410c"]; // Orange
 
-        return scaleLinear().domain([min, max]).range(range);
+        return scaleLinear().domain([min, max]).range(range as any) as any;
     }, [yearData, selectedMetric]);
 
     return (
@@ -67,6 +70,7 @@ export const WorldMap: React.FC<WorldMapProps> = ({ data, selectedMetric }) => {
                                         case 'Inflation': value = countryData.inflation; break;
                                         case 'Fiscal Deficit': value = countryData.fiscalDeficit; break;
                                         case 'Unemployment': value = countryData.unemployment; break;
+                                        case 'Growth Rate': value = countryData.growthRate; break;
                                     }
                                 }
 

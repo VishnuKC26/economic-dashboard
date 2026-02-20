@@ -1,7 +1,7 @@
 import rawData from './economic_data.json';
 
 export type Country = 'India' | 'China' | 'Japan' | 'USA' | 'Germany';
-export type Metric = 'GDP' | 'Inflation' | 'Fiscal Deficit' | 'Unemployment';
+export type Metric = 'GDP' | 'Inflation' | 'Fiscal Deficit' | 'Unemployment' | 'Growth Rate';
 
 export interface EconomicData {
     country: Country;
@@ -10,6 +10,7 @@ export interface EconomicData {
     inflation: number; // in %
     fiscalDeficit: number; // in % of GDP
     unemployment: number; // in %
+    growthRate: number; // in %
 }
 
 // Cast the imported JSON to the EconomicData type to ensure type safety

@@ -1,51 +1,51 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Bot } from 'lucide-react';
+import { Activity, RefreshCcw } from 'lucide-react';
 
 interface AICardProps {
-    insight: string;
+    insight: React.ReactNode;
     loading?: boolean;
+    color?: string;
 }
 
-export const AICard: React.FC<AICardProps> = ({ insight, loading = false }) => {
+export const AICard = ({ insight, loading = false, color = 'indigo' }: AICardProps) => {
     return (
         <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="relative overflow-hidden p-6 rounded-2xl bg-gradient-to-br from-indigo-900/40 to-slate-900/40 border border-indigo-500/30 backdrop-blur-md"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`relative overflow-hidden p-8 rounded-3xl bg-[#0f172a]/30 border border-slate-800 shadow-sm hover:border-${color}-500/20 transition-all duration-500`}
         >
-            {/* Animated Background Mesh */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[80px] rounded-full animate-pulse" />
-            </div>
 
-            <div className="relative z-10 flex flex-col gap-4">
-                <div className="flex items-center gap-2 mb-2">
-                    <div className="p-2 rounded-lg bg-indigo-500/20 text-indigo-400">
-                        <Bot className="w-5 h-5" />
+            <div className="relative z-10 flex flex-col gap-6">
+                <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                        <div className={`p-2.5 rounded-2xl ring-1 ${color === 'red' ? 'bg-red-500/10 text-red-400 ring-red-500/20' :
+                                color === 'amber' ? 'bg-amber-500/10 text-amber-400 ring-amber-500/20' :
+                                    'bg-indigo-500/10 text-indigo-400 ring-indigo-500/20'
+                            }`}>
+                            <Activity className="w-5 h-5" />
+                        </div>
+                        <h3 className="text-xl font-black bg-white bg-clip-text text-transparent tracking-tight">
+                            What This Comparison Tells Us
+                        </h3>
                     </div>
-                    <h3 className="text-lg font-semibold bg-gradient-to-r from-indigo-300 to-white bg-clip-text text-transparent">
-                        AI Economic Analysis
-                    </h3>
-                    <Sparkles className="w-4 h-4 text-amber-400 animate-bounce" />
+
+                    <button className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/50 border border-slate-700/50 text-slate-400 hover:text-white transition-all text-[10px] font-bold">
+                        <RefreshCcw className="w-3 h-3" />
+                        Regenerate
+                    </button>
                 </div>
 
-                <div className="min-h-[100px] text-slate-300 leading-relaxed text-sm md:text-base font-light">
+                <div className="min-h-[120px]">
                     {loading ? (
-                        <div className="flex flex-col gap-2">
-                            <div className="h-4 bg-slate-700/50 rounded w-3/4 animate-pulse" />
-                            <div className="h-4 bg-slate-700/50 rounded w-full animate-pulse" />
-                            <div className="h-4 bg-slate-700/50 rounded w-5/6 animate-pulse" />
+                        <div className="space-y-4">
+                            <div className="h-4 bg-slate-800/80 rounded-full w-3/4 animate-pulse" />
+                            <div className="h-4 bg-slate-800/80 rounded-full w-full animate-pulse" />
+                            <div className="h-4 bg-slate-800/80 rounded-full w-2/3 animate-pulse" />
                         </div>
                     ) : (
-                        <p>{insight}</p>
+                        insight
                     )}
-                </div>
-
-                <div className="mt-2 flex items-center gap-2 text-xs text-slate-500">
-                    <span>Generated based on live data</span>
-                    <div className="w-1 h-1 rounded-full bg-slate-600" />
-                    <span>Model: EcoGen-Proto-v1</span>
                 </div>
             </div>
         </motion.div>

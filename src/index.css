@@ -2,25 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-data: 'Space Grotesk', system-ui, sans-serif;
+
+  font-family: var(--font-data);
   line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: dark; /* Force dark mode for premium feel */
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #0f172a; /* Slate-900 base */
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  @apply bg-[#0c0c0e] text-slate-200 selection:bg-indigo-500/30 selection:text-white;
+  letter-spacing: -0.01em;
+}
+
+@layer base {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight font-black text-white;
+  }
 }

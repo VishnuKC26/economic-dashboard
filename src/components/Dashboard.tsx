@@ -14,7 +14,7 @@ import { motion } from 'framer-motion';
 import { Filter, BarChart2, LineChart as LineChartIcon, Activity } from 'lucide-react';
 
 const COUNTRIES: Country[] = ['India', 'China', 'Japan', 'USA', 'Germany'];
-const METRICS: Metric[] = ['GDP', 'Inflation', 'Fiscal Deficit', 'Unemployment'];
+const METRICS: Metric[] = ['GDP', 'Inflation', 'Fiscal Deficit', 'Unemployment', 'Growth Rate'];
 type ChartType = 'area' | 'line' | 'bar';
 
 export const Dashboard: React.FC = () => {
@@ -42,6 +42,7 @@ export const Dashboard: React.FC = () => {
                         case 'Inflation': entry[country] = dataPoint.inflation; break;
                         case 'Fiscal Deficit': entry[country] = dataPoint.fiscalDeficit; break;
                         case 'Unemployment': entry[country] = dataPoint.unemployment; break;
+                        case 'Growth Rate': entry[country] = dataPoint.growthRate; break;
                     }
                 }
             });

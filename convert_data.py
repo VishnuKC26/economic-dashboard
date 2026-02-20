@@ -13,11 +13,17 @@ def normalize_country(name):
         return 'USA'
     return name
 
-data_map = {} # (Country, Year) -> {gdp, inflation, fiscalDeficit, unemployment}
+data_map = {} # (Country, Year) -> {gdp, inflation, fiscalDeficit, unemployment, growthRate}
 
 def get_entry(country, year):
     if (country, year) not in data_map:
-        data_map[(country, year)] = {'gdp': 0, 'inflation': 0, 'fiscalDeficit': 0, 'unemployment': 0}
+        data_map[(country, year)] = {
+            'gdp': 0.0, 
+            'inflation': 0.0, 
+            'fiscalDeficit': 0.0, 
+            'unemployment': 0.0, 
+            'growthRate': 0.0
+        }
     return data_map[(country, year)]
 
 # 1. Process GDP Data
@@ -29,7 +35,14 @@ try:
         country = normalize_country(row['Country'])
         year = int(row['Year'])
         entry = get_entry(country, year)
-        entry['gdp'] = row['GDP (Trillion USD)']
+        entry['gdp'] = float(row['GDP (Trillion USD)'])
+        
+        # Pull growth rate
+        growth_rate = row['Growth Rate (%)']
+        if isinstance(growth_rate, str):
+            growth_rate = float(growth_rate.replace('%', '').strip())
+        
+        entry['growthRate'] = float(growth_rate)
 except Exception as e:
     print(f"Error processing GDP data: {e}")
 
@@ -57,9 +70,9 @@ try:
                 try:
                     val = float(val.replace('%', '').strip())
                 except ValueError:
-                    val = 0
+                    val = 0.0
             
-            entry['fiscalDeficit'] = val
+            entry['fiscalDeficit'] = float(val)
 except Exception as e:
     print(f"Error processing Fiscal Deficit data: {e}")
 
@@ -84,9 +97,9 @@ try:
                 try:
                     val = float(val.replace('%', '').strip())
                 except ValueError:
-                    val = 0
+                    val = 0.0
                 
-            entry['unemployment'] = val
+            entry['unemployment'] = float(val)
 except Exception as e:
     print(f"Error processing Unemployment data: {e}")
 
