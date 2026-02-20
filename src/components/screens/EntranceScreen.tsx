@@ -1,25 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-
 interface EntranceScreenProps {
     onStart: () => void;
 }
 
 export const EntranceScreen: React.FC<EntranceScreenProps> = ({ onStart }) => {
     return (
-        <div className="min-h-screen bg-black text-white overflow-hidden relative selection:bg-indigo-500/30 font-data">
-            {/* Lightened, Subtle Cinematic Tints */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-                {/* BLUE - Top Left */}
-                <div className="absolute top-[-20%] left-[-10%] w-[1200px] h-[1200px] rounded-full blur-[200px] bg-blue-600/10 opacity-60" />
-
-                {/* YELLOW - Middle Right */}
-                <div className="absolute top-[20%] right-[-15%] w-[1000px] h-[1000px] rounded-full blur-[180px] bg-yellow-500/08 opacity-50" />
-
-                {/* RED - Bottom Right */}
-                <div className="absolute bottom-[-15%] right-[-5%] w-[1300px] h-[1300px] rounded-full blur-[250px] bg-red-600/10 opacity-60" />
-            </div>
+        <div className="min-h-screen text-white overflow-hidden relative selection:bg-indigo-500/30 font-data">
 
             {/* Bottom-Left Content Container (Pinned) */}
             <div className="relative z-10 min-h-screen flex flex-col justify-end p-12 md:p-24 lg:p-32 w-full">

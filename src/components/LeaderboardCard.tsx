@@ -43,11 +43,11 @@ export const LeaderboardCard = ({ metric, data, color = 'indigo' }: LeaderboardC
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`relative overflow-hidden p-6 rounded-3xl bg-[#0f172a]/20 border border-slate-800 shadow-sm transition-all duration-500 ${color === 'red' ? 'hover:border-red-500/20' : color === 'amber' ? 'hover:border-amber-500/20' : 'hover:border-indigo-500/20'
+            className={`relative overflow-hidden p-6 rounded-lg bg-white/[0.03] border border-slate-800 shadow-sm transition-all duration-500 ${color === 'red' ? 'hover:border-red-500/20' : color === 'amber' ? 'hover:border-amber-500/20' : color === 'indigo' ? 'hover:border-blue-500/20' : 'hover:border-blue-500/20'
                 }`}
         >
             {/* Perspective Accent Bar */}
-            <div className={`absolute top-0 left-0 w-full h-0.5 ${color === 'red' ? 'bg-red-500/30' : color === 'amber' ? 'bg-amber-500/30' : 'bg-indigo-500/30'
+            <div className={`absolute top-0 left-0 w-full h-0.5 ${color === 'red' ? 'bg-red-500/30' : color === 'amber' ? 'bg-amber-500/30' : 'bg-blue-500/30'
                 }`} />
 
             <div className="flex items-center gap-2 mb-6 text-amber-500">
@@ -64,7 +64,7 @@ export const LeaderboardCard = ({ metric, data, color = 'indigo' }: LeaderboardC
                                 index === 0 ? (
                                     color === 'red' ? 'bg-red-500/20 text-red-500' :
                                         color === 'amber' ? 'bg-amber-500/20 text-amber-500' :
-                                            'bg-indigo-500/20 text-indigo-500'
+                                            'bg-blue-500/20 text-blue-500'
                                 ) :
                                     index === 1 ? "bg-slate-700/50 text-slate-400" :
                                         "bg-orange-950/40 text-orange-500"

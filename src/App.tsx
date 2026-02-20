@@ -3,6 +3,7 @@ import { EntranceScreen } from './components/screens/EntranceScreen';
 import { PerspectiveSelectionScreen } from './components/screens/PerspectiveSelectionScreen';
 import { MainDashboardScreen } from './components/screens/MainDashboardScreen';
 import type { Perspective } from './types/perspective';
+import { SubtleBackground } from './components/SubtleBackground';
 
 function App() {
   const [selectedPerspective, setSelectedPerspective] = useState<Perspective | null>(null);
@@ -35,10 +36,13 @@ function App() {
   }
 
   return (
-    <div className="App bg-black">
-      <EntranceScreen onStart={handleStart} />
-      <div ref={selectionRef} className="bg-black">
-        <PerspectiveSelectionScreen onSelect={handleSelectPerspective} />
+    <div className="App min-h-screen bg-black relative">
+      <SubtleBackground showAllColors={true} />
+      <div className="relative z-10">
+        <EntranceScreen onStart={handleStart} />
+        <div ref={selectionRef}>
+          <PerspectiveSelectionScreen onSelect={handleSelectPerspective} />
+        </div>
       </div>
     </div>
   );

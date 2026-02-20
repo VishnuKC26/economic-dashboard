@@ -13,15 +13,15 @@ export const AICard = ({ insight, loading = false, color = 'indigo' }: AICardPro
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`relative overflow-hidden p-8 rounded-3xl bg-[#0f172a]/30 border border-slate-800 shadow-sm hover:border-${color}-500/20 transition-all duration-500`}
+            className={`relative overflow-hidden p-8 rounded-lg bg-white/[0.04] border border-slate-800 shadow-sm hover:border-${color === 'indigo' ? 'blue' : color}-500/20 transition-all duration-500`}
         >
 
             <div className="relative z-10 flex flex-col gap-6">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <div className={`p-2.5 rounded-2xl ring-1 ${color === 'red' ? 'bg-red-500/10 text-red-400 ring-red-500/20' :
-                                color === 'amber' ? 'bg-amber-500/10 text-amber-400 ring-amber-500/20' :
-                                    'bg-indigo-500/10 text-indigo-400 ring-indigo-500/20'
+                        <div className={`p-2.5 rounded-lg ring-1 ${color === 'red' ? 'bg-red-500/10 text-red-400 ring-red-500/20' :
+                            color === 'amber' ? 'bg-amber-500/10 text-amber-400 ring-amber-500/20' :
+                                'bg-blue-500/10 text-blue-400 ring-blue-500/20'
                             }`}>
                             <Activity className="w-5 h-5" />
                         </div>
