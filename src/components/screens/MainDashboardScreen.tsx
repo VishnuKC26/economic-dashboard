@@ -289,7 +289,7 @@ export const MainDashboardScreen = ({ perspective, onSwitchPerspective }: MainDa
                                             <button
                                                 key={type}
                                                 onClick={() => setChartType(type as any)}
-                                                className={`p-2 rounded-xl transition-all ${isActive ? `${activeClasses} text-white shadow-lg` : 'text-slate-500 hover:text-white'}`}
+                                                className={`p-2 rounded-lg transition-all ${isActive ? `${activeClasses} text-white shadow-lg` : 'text-slate-500 hover:text-white'}`}
                                             >
                                                 <Icon className="w-3.5 h-3.5" />
                                             </button>
@@ -318,7 +318,7 @@ export const MainDashboardScreen = ({ perspective, onSwitchPerspective }: MainDa
                                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                                className="bg-white/[0.03] backdrop-blur-2xl border border-white/[0.08] p-6 rounded-xl w-[260px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)]"
+                                className="bg-white/[0.03] backdrop-blur-2xl border border-white/[0.08] p-6 rounded-lg w-[260px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)]"
                             >
                                 <h5 className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Switch Perspective</h5>
                                 <div className="flex flex-col gap-4">

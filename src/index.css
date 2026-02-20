@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
 :root {
   --font-data: 'Space Grotesk', system-ui, sans-serif;
@@ -17,7 +17,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  @apply bg-black text-slate-200 selection:bg-indigo-500/30 selection:text-white;
+  @apply bg-black text-slate-200 selection:bg-blue-500/30 selection:text-white;
   letter-spacing: -0.01em;
 }
 

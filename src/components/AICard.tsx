@@ -30,7 +30,7 @@ export const AICard = ({ insight, loading = false, color = 'indigo' }: AICardPro
                         </h3>
                     </div>
 
-                    <button className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/50 border border-slate-700/50 text-slate-400 hover:text-white transition-all text-[10px] font-bold">
+                    <button className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-400 hover:text-white transition-all text-[10px] font-bold">
                         <RefreshCcw className="w-3 h-3" />
                         Regenerate
                     </button>
