@@ -142,11 +142,11 @@ export const MainDashboardScreen = ({ perspective, onSwitchPerspective }: MainDa
         <Layout accentColor={perspective.color} perspectiveName={perspective.title}>
             <div className="flex flex-col gap-4 max-w-[1600px] mx-auto pb-10">
                 {/* Control Bar exactly from Screenshot 3 - Now Merged with Background */}
-                <div className="sticky top-14 z-40 py-6 px-4 -mx-4 bg-black/40 backdrop-blur-xl border-b border-white/[0.02]">
-                    <div className="flex items-center gap-8 max-w-[1600px] mx-auto">
-                        <div className="flex items-center gap-6">
-                            <span className="text-[9px] font-black text-slate-600 uppercase tracking-[0.3em]">Countries</span>
-                            <div className="flex gap-2">
+                <div className="sticky top-14 z-40 py-4 md:py-6 px-4 -mx-4 bg-black/40 backdrop-blur-xl border-b border-white/[0.02] overflow-x-auto no-scrollbar">
+                    <div className="flex items-center gap-6 md:gap-8 max-w-[1600px] mx-auto min-w-max">
+                        <div className="flex items-center gap-4 md:gap-6">
+                            <span className="text-[8px] md:text-[9px] font-black text-slate-600 uppercase tracking-[0.3em]">Countries</span>
+                            <div className="flex gap-1.5 md:gap-2">
                                 {COUNTRIES.map(c => {
                                     const isSelected = selectedCountries.includes(c);
                                     return (
@@ -154,7 +154,7 @@ export const MainDashboardScreen = ({ perspective, onSwitchPerspective }: MainDa
                                             key={c}
                                             onClick={() => toggleCountry(c)}
                                             className={clsx(
-                                                "px-5 py-2 text-[10px] rounded-lg font-black transition-all border uppercase tracking-widest",
+                                                "px-3 md:px-5 py-1.5 md:py-2 text-[9px] md:text-[10px] rounded-lg font-black transition-all border uppercase tracking-widest whitespace-nowrap",
                                                 isSelected ?
                                                     'bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.2)]' :
                                                     'bg-white/[0.03] border-white/[0.05] text-slate-500 hover:text-white hover:bg-white/[0.08]'
@@ -167,11 +167,11 @@ export const MainDashboardScreen = ({ perspective, onSwitchPerspective }: MainDa
                             </div>
                         </div>
 
-                        <div className="w-px h-8 bg-white/[0.05]"></div>
+                        <div className="w-px h-6 md:h-8 bg-white/[0.05]"></div>
 
-                        <div className="flex items-center gap-6">
-                            <span className="text-[9px] font-black text-slate-600 uppercase tracking-[0.3em]">Indicators</span>
-                            <div className="flex gap-2">
+                        <div className="flex items-center gap-4 md:gap-6">
+                            <span className="text-[8px] md:text-[9px] font-black text-slate-600 uppercase tracking-[0.3em]">Indicators</span>
+                            <div className="flex gap-1.5 md:gap-2">
                                 {perspective.indicators.map(ind => {
                                     const isSelected = selectedIndicator.id === ind.id;
                                     const color = perspective.color;
@@ -181,7 +181,7 @@ export const MainDashboardScreen = ({ perspective, onSwitchPerspective }: MainDa
                                             key={ind.id}
                                             onClick={() => setSelectedIndicator(ind)}
                                             className={clsx(
-                                                "px-5 py-2 text-[10px] rounded-lg font-black transition-all border uppercase tracking-widest",
+                                                "px-3 md:px-5 py-1.5 md:py-2 text-[9px] md:text-[10px] rounded-lg font-black transition-all border uppercase tracking-widest whitespace-nowrap",
                                                 isSelected ?
                                                     (color === 'red' ? 'bg-red-600 border-red-400 text-white shadow-lg shadow-red-600/30' :
                                                         color === 'amber' ? 'bg-amber-600 border-amber-400 text-white shadow-lg shadow-amber-600/30' :
@@ -198,8 +198,8 @@ export const MainDashboardScreen = ({ perspective, onSwitchPerspective }: MainDa
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
-                    {/* Left Column (4/12) */}
+                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+                    {/* Left Column (3/12) */}
                     <div className="lg:col-span-3 flex flex-col gap-4">
                         {/* Leaderboard Matching Screenshot */}
                         <LeaderboardCard
@@ -209,12 +209,12 @@ export const MainDashboardScreen = ({ perspective, onSwitchPerspective }: MainDa
                         />
 
                         {/* About this indicator - Now Expandable */}
-                        <div className="p-6 rounded-lg bg-white/[0.03] border border-slate-800 shadow-sm transition-all duration-500">
+                        <div className="p-5 md:p-6 rounded-lg bg-white/[0.03] border border-slate-800 shadow-sm transition-all duration-500">
                             <div className={`flex items-center gap-3 mb-3 ${perspective.color === 'red' ? 'text-red-400' : perspective.color === 'amber' ? 'text-amber-400' : 'text-blue-400'}`}>
                                 <Activity className="w-3.5 h-3.5" />
                                 <h3 className="text-[9px] font-black uppercase tracking-widest">About this indicator</h3>
                             </div>
-                            <h4 className="text-lg font-bold mb-3 leading-tight">{selectedIndicator.description}</h4>
+                            <h4 className="text-base md:text-lg font-bold mb-3 leading-tight">{selectedIndicator.description}</h4>
 
                             <AnimatePresence>
                                 {isAboutExpanded && (
@@ -263,17 +263,17 @@ export const MainDashboardScreen = ({ perspective, onSwitchPerspective }: MainDa
                     {/* Right Column (9/12) */}
                     <div className="lg:col-span-9 flex flex-col gap-4">
                         {/* Trends Card */}
-                        <div className="p-6 rounded-lg bg-white/[0.02] border border-slate-800 shadow-sm">
-                            <div className="flex items-center justify-between mb-6">
+                        <div className="p-5 md:p-6 rounded-lg bg-white/[0.02] border border-slate-800 shadow-sm">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                                 <div>
                                     <div className="flex items-center gap-2 mb-1">
                                         <div className={`w-1 h-4 rounded-full ${perspective.color === 'red' ? 'bg-red-500' : perspective.color === 'amber' ? 'bg-amber-500' : 'bg-blue-500'}`} />
-                                        <h3 className="text-lg font-black tracking-tight uppercase leading-none">{selectedIndicator.name} Analysis</h3>
+                                        <h3 className="text-base md:text-lg font-black tracking-tight uppercase leading-none">{selectedIndicator.name} Analysis</h3>
                                     </div>
                                     <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Global Trends 2023 - 2025</p>
                                 </div>
 
-                                <div className="flex bg-slate-800/50 p-1 rounded-lg border border-slate-700/50 shadow-inner">
+                                <div className="flex bg-slate-800/50 p-1 rounded-lg border border-slate-700/50 shadow-inner w-fit">
                                     {['area', 'line', 'bar'].map(type => {
                                         const isActive = chartType === type;
                                         const color = perspective.color;
@@ -298,7 +298,7 @@ export const MainDashboardScreen = ({ perspective, onSwitchPerspective }: MainDa
                                 </div>
                             </div>
 
-                            <div className="h-[320px] w-full mt-2">
+                            <div className="h-[280px] md:h-[320px] w-full mt-2">
                                 <ResponsiveContainer width="100%" height="100%">
                                     {renderChart()}
                                 </ResponsiveContainer>

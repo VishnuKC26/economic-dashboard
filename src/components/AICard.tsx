@@ -13,7 +13,7 @@ export const AICard = ({ insight, loading = false, color = 'indigo' }: AICardPro
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`relative overflow-hidden p-8 rounded-lg bg-white/[0.04] border border-slate-800 shadow-sm hover:border-${color === 'indigo' ? 'blue' : color}-500/20 transition-all duration-500`}
+            className={`relative overflow-hidden p-6 md:p-8 rounded-lg bg-white/[0.04] border border-slate-800 shadow-sm hover:border-${color === 'indigo' ? 'blue' : color}-500/20 transition-all duration-500`}
         >
 
             <div className="relative z-10 flex flex-col gap-6">

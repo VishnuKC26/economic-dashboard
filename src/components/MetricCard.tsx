@@ -19,7 +19,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({ title, value, trend, tre
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: delay * 0.1 }}
-            className="relative overflow-hidden p-6 pl-8 rounded-lg bg-white/[0.03] border border-slate-800/60 backdrop-blur-sm group hover:bg-white/[0.05] transition-all duration-300"
+            className="relative overflow-hidden p-5 md:p-6 pl-7 md:pl-8 rounded-lg bg-white/[0.03] border border-slate-800/60 backdrop-blur-sm group hover:bg-white/[0.05] transition-all duration-300"
         >
             {/* Professional Vertical Accent Bar */}
             <div className={clsx(
