@@ -6,19 +6,28 @@
 
 :root {
   --font-data: 'Space Grotesk', system-ui, sans-serif;
+  --bg-sepia: #f5f2e9;
+  --text-sepia-primary: #433422;
+  --text-sepia-secondary: #8c7b60;
+  --border-sepia: rgba(67, 52, 34, 0.1);
 
   font-family: var(--font-data);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
+  color: #433422;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  @apply bg-black text-slate-200 selection:bg-blue-500/30 selection:text-white;
+  @apply bg-[#f5f2e9] text-[#433422] transition-colors duration-500;
   letter-spacing: -0.01em;
+}
+
+.dark body {
+  @apply bg-black text-slate-200;
 }
 
 @layer base {
@@ -29,7 +38,16 @@ body {
   h4,
   h5,
   h6 {
-    @apply tracking-tight font-black text-white;
+    @apply tracking-tight font-black text-[#433422];
+  }
+
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    @apply text-slate-200;
   }
 }
 

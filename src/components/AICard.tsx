@@ -13,7 +13,7 @@ export const AICard = ({ insight, loading = false, color = 'indigo' }: AICardPro
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`relative overflow-hidden p-6 md:p-8 rounded-lg bg-white/[0.04] border border-slate-800 shadow-sm hover:border-${color === 'indigo' ? 'blue' : color}-500/20 transition-all duration-500`}
+            className={`relative overflow-hidden p-6 md:p-8 rounded-lg transition-all duration-500 bg-black/5 dark:bg-slate-900/40 border border-[#433422]/10 dark:border-white/[0.05] shadow-sm hover:border-${color === 'indigo' ? 'blue' : color}-500/20`}
         >
 
             <div className="relative z-10 flex flex-col gap-6">
@@ -25,12 +25,12 @@ export const AICard = ({ insight, loading = false, color = 'indigo' }: AICardPro
                             }`}>
                             <Activity className="w-5 h-5" />
                         </div>
-                        <h3 className="text-xl font-black bg-white bg-clip-text text-transparent tracking-tight">
+                        <h3 className="text-xl font-black bg-gradient-to-br from-[#433422] to-[#8c7b60] dark:from-slate-100 dark:to-slate-400 bg-clip-text text-transparent tracking-tight">
                             What This Comparison Tells Us
                         </h3>
                     </div>
 
-                    <button className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-400 hover:text-white transition-all text-[10px] font-bold">
+                    <button className="flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all text-[10px] font-bold bg-slate-800/10 dark:bg-slate-800/50 border border-slate-700/50 dark:border-slate-700/50 text-[#8c7b60] dark:text-slate-300 hover:text-[#433422] dark:hover:text-slate-100">
                         <RefreshCcw className="w-3 h-3" />
                         Regenerate
                     </button>
@@ -39,9 +39,9 @@ export const AICard = ({ insight, loading = false, color = 'indigo' }: AICardPro
                 <div className="min-h-[120px]">
                     {loading ? (
                         <div className="space-y-4">
-                            <div className="h-4 bg-slate-800/80 rounded-full w-3/4 animate-pulse" />
-                            <div className="h-4 bg-slate-800/80 rounded-full w-full animate-pulse" />
-                            <div className="h-4 bg-slate-800/80 rounded-full w-2/3 animate-pulse" />
+                            <div className="h-4 bg-[#433422]/10 dark:bg-slate-800/80 rounded-full w-3/4 animate-pulse" />
+                            <div className="h-4 bg-[#433422]/10 dark:bg-slate-800/80 rounded-full w-full animate-pulse" />
+                            <div className="h-4 bg-[#433422]/10 dark:bg-slate-800/80 rounded-full w-2/3 animate-pulse" />
                         </div>
                     ) : (
                         insight

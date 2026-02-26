@@ -23,18 +23,8 @@ export const generateInsight = (
     // Concise Insight Generation
     let insight = `In 2025, ${top.country} leads with a ${selectedMetric} of ${formatValue(top, selectedMetric)}. `;
 
-    if (selectedMetric === 'GDP') {
-        insight += `Its massive economic scale dominates the group, while smaller economies like ${bottom.country} (${formatValue(bottom, selectedMetric)}) must focus on niche growth. `;
-    } else if (selectedMetric === 'Inflation') {
-        insight += top.inflation > 4
-            ? `High inflation (>4%) here signals purchasing power erosion, contrasting with ${bottom.country}'s lower rate of ${bottom.inflation}%. `
-            : `The group maintains stable prices, with ${bottom.country} seeing the lowest inflation at ${bottom.inflation}%. `;
-    } else if (selectedMetric === 'Fiscal Deficit') {
-        insight += `A high deficit of ${top.fiscalDeficit}% suggests aggressive spending, whereas ${bottom.country} (${bottom.fiscalDeficit}%) shows fiscal prudence. `;
-    } else if (selectedMetric === 'Unemployment') {
-        insight += `${bottom.country} outperforms with only ${bottom.unemployment}% unemployment, indicating near-full employment compared to ${top.country}'s ${top.unemployment}%. `;
-    } else if (selectedMetric === 'Growth Rate') {
-        insight += `${top.country} shows robust momentum with ${top.growthRate}% growth, while ${bottom.country} (${bottom.growthRate}%) trails in the current expansion cycle. `;
+    if (top.country !== bottom.country) {
+        insight += `In contrast, ${bottom.country} records ${formatValue(bottom, selectedMetric)}. `;
     }
 
     const topPrev = data.find(d => d.country === top.country && d.year === 2023);
@@ -48,23 +38,28 @@ export const generateInsight = (
 };
 
 const getValue = (d: EconomicData, metric: Metric): number => {
-    switch (metric) {
-        case 'GDP': return d.gdp;
-        case 'Inflation': return d.inflation;
-        case 'Fiscal Deficit': return d.fiscalDeficit;
-        case 'Unemployment': return d.unemployment;
-        case 'Growth Rate': return d.growthRate;
-        default: return 0;
-    }
+    const key = metric === 'GDP' ? 'gdp' : metric === 'GDP per Capita' ? 'gdpPerCapita' : metric.charAt(0).toLowerCase() + metric.slice(1).replace(/ /g, '');
+    return d[key as keyof EconomicData] as number || 0;
 };
 
 const formatValue = (d: EconomicData, metric: Metric): string => {
+    const val = getValue(d, metric);
     switch (metric) {
-        case 'GDP': return `$${d.gdp}T`;
-        case 'Inflation': return `${d.inflation}%`;
-        case 'Fiscal Deficit': return `${d.fiscalDeficit}%`;
-        case 'Unemployment': return `${d.unemployment}%`;
-        case 'Growth Rate': return `${d.growthRate}%`;
-        default: return '';
+        case 'GDP': return `$${val}T`;
+        case 'GDP per Capita': return `$${val.toLocaleString()}`;
+        case 'Growth Rate': return `${val}%`;
+        case 'CPI':
+        case 'PPI':
+        case 'Unemployment Rate':
+        case 'Wage Growth':
+        case 'Real Disposable Income':
+        case 'Current Account': return `${val}%`;
+        case 'Trade Balance': return `$${val}B`;
+        case 'Exchange Rate': return `${val}`;
+        case 'PMI':
+        case 'IIP':
+        case 'Import Price Index':
+        case 'NEER': return `${val}`;
+        default: return `${val}`;
     }
 };

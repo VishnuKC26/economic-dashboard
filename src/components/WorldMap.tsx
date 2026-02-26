@@ -28,26 +28,25 @@ export const WorldMap: React.FC<WorldMapProps> = ({ data, selectedMetric }) => {
         'Germany': 'Germany'
     };
 
+    const getRawValue = (d: EconomicData, m: Metric): number => {
+        const key = m === 'GDP' ? 'gdp' : m === 'GDP per Capita' ? 'gdpPerCapita' : m.charAt(0).toLowerCase() + m.slice(1).replace(/ /g, '');
+        return d[key as keyof EconomicData] as number || 0;
+    };
+
     const colorScale = useMemo(() => {
-        const values = yearData.map(d => {
-            switch (selectedMetric) {
-                case 'GDP': return d.gdp;
-                case 'Inflation': return d.inflation;
-                case 'Fiscal Deficit': return d.fiscalDeficit;
-                case 'Unemployment': return d.unemployment;
-                case 'Growth Rate': return d.growthRate;
-                default: return 0;
-            }
-        });
+        const values = yearData.map(d => getRawValue(d, selectedMetric));
 
         const numericValues = values.filter((v): v is number => typeof v === 'number');
         const min = numericValues.length > 0 ? Math.min(...numericValues) : 0;
         const max = numericValues.length > 0 ? Math.max(...numericValues) : 100;
 
         // Dynamic color scale based on metric
-        let range: [string, string] = ["#ffedea", "#ff5233"];
-        if (selectedMetric === 'GDP' || selectedMetric === 'Growth Rate') range = ["#e0e7ff", "#3730a3"]; // Indigo
-        if (selectedMetric === 'Inflation') range = ["#fff7ed", "#c2410c"]; // Orange
+        let range: [string, string] = ["#ffedea", "#ff5233"]; // Default Red
+        const indigoMetrics: Metric[] = ['GDP', 'GDP per Capita', 'Growth Rate', 'PMI', 'IIP', 'Retail Sales'];
+        const orangeMetrics: Metric[] = ['CPI', 'PPI', 'Import Price Index', 'Wage Growth', 'Real Disposable Income'];
+
+        if (indigoMetrics.includes(selectedMetric)) range = ["#e0e7ff", "#3730a3"]; // Indigo
+        else if (orangeMetrics.includes(selectedMetric)) range = ["#fff7ed", "#c2410c"]; // Orange
 
         return scaleLinear().domain([min, max]).range(range as any) as any;
     }, [yearData, selectedMetric]);
@@ -65,13 +64,7 @@ export const WorldMap: React.FC<WorldMapProps> = ({ data, selectedMetric }) => {
 
                                 let value = 0;
                                 if (countryData) {
-                                    switch (selectedMetric) {
-                                        case 'GDP': value = countryData.gdp; break;
-                                        case 'Inflation': value = countryData.inflation; break;
-                                        case 'Fiscal Deficit': value = countryData.fiscalDeficit; break;
-                                        case 'Unemployment': value = countryData.unemployment; break;
-                                        case 'Growth Rate': value = countryData.growthRate; break;
-                                    }
+                                    value = getRawValue(countryData, selectedMetric);
                                 }
 
                                 return (

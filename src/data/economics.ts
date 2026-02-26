@@ -1,16 +1,27 @@
 import rawData from './economic_data.json';
 
 export type Country = 'India' | 'China' | 'Japan' | 'USA' | 'Germany';
-export type Metric = 'GDP' | 'Inflation' | 'Fiscal Deficit' | 'Unemployment' | 'Growth Rate';
+export type Metric = 'GDP' | 'GDP per Capita' | 'Growth Rate' | 'PMI' | 'IIP' | 'Retail Sales' | 'CPI' | 'PPI' | 'Import Price Index' | 'Unemployment Rate' | 'Wage Growth' | 'Real Disposable Income' | 'Current Account' | 'Trade Balance' | 'Exchange Rate' | 'NEER';
 
 export interface EconomicData {
     country: Country;
     year: number;
     gdp: number; // in Trillion USD
-    inflation: number; // in %
-    fiscalDeficit: number; // in % of GDP
-    unemployment: number; // in %
+    gdpPerCapita: number; // in USD
     growthRate: number; // in %
+    pmi: number; // Index
+    iip: number; // Index
+    retailSales: number; // in % YoY
+    cpi: number; // in % YoY
+    ppi: number; // in % YoY
+    importPriceIndex: number; // Index
+    unemployment: number; // in %
+    wageGrowth: number; // in % YoY
+    realDisposableIncome: number; // in % YoY
+    currentAccount: number; // % of GDP
+    tradeBalance: number; // Billion USD
+    exchangeRate: number; // Local Currency per USD
+    neer: number; // Index
 }
 
 // Cast the imported JSON to the EconomicData type to ensure type safety

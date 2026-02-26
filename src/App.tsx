@@ -1,13 +1,24 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { EntranceScreen } from './components/screens/EntranceScreen';
 import { PerspectiveSelectionScreen } from './components/screens/PerspectiveSelectionScreen';
-import { MainDashboardScreen } from './components/screens/MainDashboardScreen';
+import { AppDashboardScreen } from './components/screens/AppDashboardScreen';
 import type { Perspective } from './types/perspective';
 import { SubtleBackground } from './components/SubtleBackground';
 
 function App() {
   const [selectedPerspective, setSelectedPerspective] = useState<Perspective | null>(null);
+  const [isDark, setIsDark] = useState(true);
   const selectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDark]);
+
+  const toggleTheme = () => setIsDark(!isDark);
 
   const handleStart = () => {
     selectionRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -26,22 +37,24 @@ function App() {
   if (selectedPerspective) {
     return (
       <div className="App">
-        <MainDashboardScreen
+        <AppDashboardScreen
           perspective={selectedPerspective}
           onBack={handleBack}
           onSwitchPerspective={handleSelectPerspective}
+          isDark={isDark}
+          toggleTheme={toggleTheme}
         />
       </div>
     );
   }
 
   return (
-    <div className="App min-h-screen bg-black relative">
+    <div className={`App min-h-screen relative transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-[#f5f2e9]'}`}>
       <SubtleBackground showAllColors={true} />
       <div className="relative z-10">
-        <EntranceScreen onStart={handleStart} />
+        <EntranceScreen onStart={handleStart} isDark={isDark} toggleTheme={toggleTheme} />
         <div ref={selectionRef}>
-          <PerspectiveSelectionScreen onSelect={handleSelectPerspective} />
+          <PerspectiveSelectionScreen onSelect={handleSelectPerspective} isDark={isDark} toggleTheme={toggleTheme} />
         </div>
       </div>
     </div>
